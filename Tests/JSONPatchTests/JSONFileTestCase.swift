@@ -112,7 +112,7 @@ class JSONFileTestCase: XCTestCase {
 extension JSONFileTestCase {
 
     private class func loadJSONTestFile(_ filename: String) throws -> [[String: Any]] {
-        guard let url = Bundle.test.url(forResource: filename,
+        guard let url = Bundle.main.url(forResource: filename,
                                         withExtension: "json") else {
             return []
         }

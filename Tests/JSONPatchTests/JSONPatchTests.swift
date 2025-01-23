@@ -97,9 +97,9 @@ class JSONPatchTests: XCTestCase {
     }
 
     func testLargeJson() throws {
-        let sourceURL = Bundle.test.url(forResource: "bigexample1", withExtension: "json")!
-        let targetURL = Bundle.test.url(forResource: "bigexample2", withExtension: "json")!
-        let patchURL = Bundle.test.url(forResource: "bigpatch", withExtension: "json")!
+        let sourceURL = Bundle.module.url(forResource: "bigexample1", withExtension: "json")!
+        let targetURL = Bundle.module.url(forResource: "bigexample2", withExtension: "json")!
+        let patchURL = Bundle.module.url(forResource: "bigpatch", withExtension: "json")!
 
         let sourceData = try Data(contentsOf: sourceURL)
         let targetData = try Data(contentsOf: targetURL)
@@ -114,8 +114,8 @@ class JSONPatchTests: XCTestCase {
     }
 
     func testLargeJSONPerformance() throws {
-        let sourceURL = Bundle.test.url(forResource: "bigexample1", withExtension: "json")!
-        let patchURL = Bundle.test.url(forResource: "bigpatch", withExtension: "json")!
+        let sourceURL = Bundle.module.url(forResource: "bigexample1", withExtension: "json")!
+        let patchURL = Bundle.module.url(forResource: "bigpatch", withExtension: "json")!
 
         let sourceData = try Data(contentsOf: sourceURL)
         let patchData = try Data(contentsOf: patchURL)

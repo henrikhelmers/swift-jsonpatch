@@ -23,8 +23,8 @@ import XCTest
 
 class JSONPatchGeneratorTests: XCTestCase {
 
-    static let sourceURL = Bundle.test.url(forResource: "bigexample1", withExtension: "json")!
-    static let targetURL = Bundle.test.url(forResource: "bigexample2", withExtension: "json")!
+    static let sourceURL = Bundle.module.url(forResource: "bigexample1", withExtension: "json")!
+    static let targetURL = Bundle.module.url(forResource: "bigexample2", withExtension: "json")!
 
     var sourceData: Data { return try! Data(contentsOf: JSONPatchGeneratorTests.sourceURL) }
     var targetData: Data { return try! Data(contentsOf: JSONPatchGeneratorTests.targetURL) }
