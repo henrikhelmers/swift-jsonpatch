@@ -22,6 +22,7 @@ import Foundation
 
 /// A JSON Pointer implementation, based on RFC 6901.
 /// https://tools.ietf.org/html/rfc6901
+@frozen
 public struct JSONPointer {
 
     /// An array of the unescaped components of the json-pointer.

@@ -22,6 +22,7 @@ import Foundation
 
 /// JSON Element holds a reference an element of the parsed JSON structure
 /// produced by JSONSerialization.
+@frozen
 public enum JSONElement {
     case object(value: NSDictionary)
     case mutableObject(value: NSMutableDictionary)

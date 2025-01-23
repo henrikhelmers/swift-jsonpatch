@@ -26,12 +26,13 @@ import Foundation
 /// JSONSerialization.
 ///
 /// https://tools.ietf.org/html/rfc6902
-public class JSONPatch: Codable {
+final public class JSONPatch: Codable {
     
     /// The mimetype for json-patch
     public static let mimetype = "application/json-patch+json"
 
     /// Options given to the patch process.
+    @frozen
     public enum ApplyOption: Equatable {
         /// By default the patch will be applied directly on to the json object
         /// given, which is the most memory efficient option. However when applying
@@ -48,6 +49,7 @@ public class JSONPatch: Codable {
 
     /// A representation of the supported operations json-patch.
     /// (see [RFC6902], Section 4)
+    @frozen
     public enum Operation {
         case add(path: JSONPointer, value: JSONElement)
         case remove(path: JSONPointer)

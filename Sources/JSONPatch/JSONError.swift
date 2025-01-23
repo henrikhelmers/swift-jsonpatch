@@ -20,6 +20,7 @@
 
 import Foundation
 
+@frozen
 public enum JSONError: Error {
     case invalidObjectType
     case invalidPointerSyntax
