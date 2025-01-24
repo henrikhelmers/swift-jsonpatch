@@ -11,19 +11,10 @@ The implementation uses the [JSON Patch Tests](https://github.com/json-patch/jso
 1.0.6 - Added support for Linux.
 
 # Installation
-
-## CocoaPods
-See [CocoaPods.md](Docs/CocoaPods.md)
-
-## Swift Package Manager
-See [SPM.md](Docs/SPM.md)
-
-## Carthage
-See [Carthage.md](Docs/Carthage.md)
+Use the Swift Package Manager.
 
 # Usage
-
-A more detailed explanation of JSONPatch is given in [Usage.md](Docs/Usage.md).
+A more detailed explanation of JSONPatch is given in [Usage.md](Usage.md).
 
 ## Applying Patches
 ```swift
