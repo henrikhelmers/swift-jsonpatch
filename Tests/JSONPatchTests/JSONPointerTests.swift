@@ -18,11 +18,10 @@
 //  limitations under the License.
 //
 
-import XCTest
 @testable import JSONPatch
+import XCTest
 
 class JSONPointerTests: XCTestCase {
-
     func parent(_ string: String) -> String? {
         let pointer = try? JSONPointer(string: string)
         let parent = pointer?.parent
@@ -47,5 +46,4 @@ class JSONPointerTests: XCTestCase {
         XCTAssertTrue(JSONPointer.isValidArrayIndex("10"))
         XCTAssertFalse(JSONPointer.isValidArrayIndex("00"))
     }
-
 }

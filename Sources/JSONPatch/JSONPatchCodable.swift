@@ -23,7 +23,7 @@ import Foundation
 extension JSONPointer: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
-        try self.init(string: try container.decode(String.self))
+        try self.init(string: container.decode(String.self))
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -215,7 +215,7 @@ private struct NSDictionaryCodingKey: CodingKey {
     }
 
     init?(intValue: Int) {
-        self.stringValue = ""
+        stringValue = ""
         self.intValue = intValue
     }
 }

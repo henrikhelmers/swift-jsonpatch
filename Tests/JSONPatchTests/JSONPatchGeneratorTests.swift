@@ -18,11 +18,10 @@
 //  limitations under the License.
 //
 
-import XCTest
 @testable import JSONPatch
+import XCTest
 
 class JSONPatchGeneratorTests: XCTestCase {
-
     static let sourceURL = Bundle.module.url(forResource: "bigexample1", withExtension: "json")!
     static let targetURL = Bundle.module.url(forResource: "bigexample2", withExtension: "json")!
 
@@ -44,7 +43,7 @@ class JSONPatchGeneratorTests: XCTestCase {
         let source = try JSONSerialization.jsonElement(with: sourceData, options: [.mutableContainers])
         let target = try JSONSerialization.jsonElement(with: targetData, options: [])
 
-        self.measure {
+        measure {
             do {
                 _ = try JSONPatch(source: source, target: target)
             } catch {
@@ -58,5 +57,4 @@ class JSONPatchGeneratorTests: XCTestCase {
         let patch = try JSONPatch(source: source, target: source)
         XCTAssertEqual(patch.operations.count, 0)
     }
-
 }

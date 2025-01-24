@@ -6,11 +6,10 @@
 //  Copyright © 2018 Raymond McCrae. All rights reserved.
 //
 
-import XCTest
 @testable import JSONPatch
+import XCTest
 
 class ArrayTests: XCTestCase {
-
     func testLevel1DeepCopy() {
         let a = NSArray(array: ["a", "b", "c"])
         let b = a.deepMutableCopy()
@@ -88,5 +87,4 @@ class ArrayTests: XCTestCase {
         XCTAssertEqual(copy.count, 1)
         XCTAssertEqual(copy[0] as? String, "1")
     }
-
 }

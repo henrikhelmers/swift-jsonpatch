@@ -143,8 +143,8 @@ struct JSONPatchGenerator {
 
         for key in sourceKeySet.subtracting(targetKeySet) {
             guard let value = source[key] else { continue }
-            remove(path: pointer.appended(withComponent: key),
-                   value: try JSONElement(any: value))
+            try remove(path: pointer.appended(withComponent: key),
+                       value: JSONElement(any: value))
         }
 
         for key in targetKeySet.subtracting(sourceKeySet) {
@@ -168,24 +168,24 @@ struct JSONPatchGenerator {
                                              target: NSArray) throws {
         if source.count > target.count {
             // target is smaller than source, remove end elements.
-            for index in (target.count..<source.count).reversed() {
-                remove(path: pointer.appended(withIndex: index),
-                       value: try JSONElement(any: source[index]))
+            for index in (target.count ..< source.count).reversed() {
+                try remove(path: pointer.appended(withIndex: index),
+                           value: JSONElement(any: source[index]))
             }
         }
 
         let count = min(source.count, target.count)
         for index in 0..<count {
             try generateDiffs(pointer: pointer.appended(withIndex: index),
-                              source: try JSONElement(any: source[index]),
-                              target: try JSONElement(any: target[index]))
+                              source: JSONElement(any: source[index]),
+                              target: JSONElement(any: target[index]))
         }
 
         if source.count < target.count {
             let appendPointer = pointer.appended(withComponent: "-")
-            for index in source.count..<target.count {
-                add(path: appendPointer,
-                    value: try JSONElement(any: target[index]))
+            for index in source.count ..< target.count {
+                try add(path: appendPointer,
+                        value: JSONElement(any: target[index]))
             }
         }
     }

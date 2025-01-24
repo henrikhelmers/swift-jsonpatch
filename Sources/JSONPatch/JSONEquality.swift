@@ -106,7 +106,7 @@ extension NSDictionary: JSONEquatable {
         switch element {
         case let .object(dict) where dict.count == count,
              let .mutableObject(dict as NSDictionary) where dict.count == count:
-            let keys = self.allKeys
+            let keys = allKeys
             for key in keys {
                 guard
                     let dictValue = dict[key],

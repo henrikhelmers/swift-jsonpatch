@@ -18,11 +18,10 @@
 //  limitations under the License.
 //
 
-import XCTest
 @testable import JSONPatch
+import XCTest
 
 class JSONFileTestCase: XCTestCase {
-
     let index: Int
     let testJson: [String: Any]
 
@@ -32,7 +31,7 @@ class JSONFileTestCase: XCTestCase {
 
     override class var defaultTestSuite: XCTestSuite {
         let suite = XCTestSuite(forTestCaseClass: self)
-        guard let filename = self.filename else {
+        guard let filename = filename else {
             return suite
         }
 
@@ -106,11 +105,9 @@ class JSONFileTestCase: XCTestCase {
             }
         }
     }
-
 }
 
 extension JSONFileTestCase {
-
     private class func loadJSONTestFile(_ filename: String) throws -> [[String: Any]] {
         guard let url = Bundle.main.url(forResource: filename,
                                         withExtension: "json") else {

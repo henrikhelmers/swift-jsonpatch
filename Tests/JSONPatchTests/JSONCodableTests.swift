@@ -18,8 +18,8 @@
 //  limitations under the License.
 //
 
-import XCTest
 @testable import JSONPatch
+import XCTest
 
 private struct Person: Codable {
     var firstName: String
@@ -28,7 +28,6 @@ private struct Person: Codable {
 }
 
 class JSONCodableTests: XCTestCase {
-
     func testCreatePatch() throws {
         let source = Person(firstName: "Michiel", lastName: "Horvers", age: 99)
         let target = Person(firstName: "Michiel", lastName: "Horvers", age: 100)

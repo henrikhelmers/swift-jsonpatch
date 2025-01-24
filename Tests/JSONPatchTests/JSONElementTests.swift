@@ -18,11 +18,10 @@
 //  limitations under the License.
 //
 
-import XCTest
 @testable import JSONPatch
+import XCTest
 
 class JSONElementTests: XCTestCase {
-
     func testNumericEquality() throws {
         let boolFalse = try JSONElement(any: NSNumber(value: false))
         let int0 = try JSONElement(any: NSNumber(value: 0))
@@ -74,5 +73,4 @@ class JSONElementTests: XCTestCase {
             XCTFail("Should not throw an exception, but caught: \(error)")
         }
     }
-
 }

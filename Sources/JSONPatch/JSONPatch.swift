@@ -396,7 +396,7 @@ public extension JSONPatch {
      */
     func applied<T: Codable>(to object: T) throws -> T {
         let data = try JSONEncoder().encode(object)
-        let patchedData = try self.apply(to: data)
+        let patchedData = try apply(to: data)
 
         return try JSONDecoder().decode(T.self, from: patchedData)
     }

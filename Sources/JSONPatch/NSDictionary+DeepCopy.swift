@@ -25,7 +25,7 @@ extension NSDictionary {
     func deepMutableCopy() -> NSMutableDictionary {
         let result = NSMutableDictionary()
 
-        self.enumerateKeysAndObjects { (key, value, _) in
+        enumerateKeysAndObjects { key, value, _ in
             #if os(Linux)
             switch value {
             case let array as NSArray:

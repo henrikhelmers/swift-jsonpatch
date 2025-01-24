@@ -182,8 +182,8 @@ extension JSONElement {
     ///   - pointer: The json pointer to identify the path of json element containers.
     /// - Returns: The last json element in the path.
     private mutating func makePathMutable(_ pointer: JSONPointer) throws -> JSONElement {
-        if !self.isMutable {
-            self.makeMutable()
+        if !isMutable {
+            makeMutable()
         }
 
         guard pointer.string != "/" else {
@@ -392,7 +392,7 @@ extension JSONElement {
             throw JSONError.referencesNonexistentValue
         }
 
-        var fromParentElement = try  makePathMutable(fromParent)
+        var fromParentElement = try makePathMutable(fromParent)
         let value = try fromParentElement.value(for: from.lastComponent!)
         try fromParentElement.removeValue(component: from.lastComponent!)
 
@@ -510,7 +510,6 @@ extension JSONElement {
 }
 
 extension JSONElement: Equatable {
-
     /// Tests if two JSON Elements are structurally.
     ///
     /// - Parameters:
@@ -549,7 +548,6 @@ extension JSONElement: Equatable {
             return false
         }
     }
-
 }
 
 extension JSONSerialization {

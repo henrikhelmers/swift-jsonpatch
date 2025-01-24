@@ -18,11 +18,10 @@
 //  limitations under the License.
 //
 
-import XCTest
 @testable import JSONPatch
+import XCTest
 
 class JSONPatchTests: XCTestCase {
-
     func evaluate(path: String, on json: JSONElement) -> JSONElement? {
         guard let ptr = try? JSONPointer(string: path) else {
             return nil
@@ -136,7 +135,7 @@ class JSONPatchTests: XCTestCase {
 
         let p = try JSONPatch(data: patch)
         let s = try JSONSerialization.jsonObject(with: Data(source.utf8), options: [])
-        let applied = try p.apply(to: s, options: [.relative(to: try JSONPointer(string: "/a"))])
+        let applied = try p.apply(to: s, options: [.relative(to: JSONPointer(string: "/a"))])
         XCTAssertEqual(applied as? NSDictionary, ["a": ["b": "qux"]] as NSDictionary)
     }
 
