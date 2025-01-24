@@ -1,4 +1,4 @@
-# JSONPatch - Swift 4/5 json-patch implementation
+# JSONPatch - Swift 6 JSON Patch implementation
 [![Apache 2 License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Supported Platforms](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg)](http://developer.apple.com)
 [![Package Manager](https://img.shields.io/badge/Package%20Manager-SPM-yellow.svg)](https://swift.org/package-manager/)
