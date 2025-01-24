@@ -4,7 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "JSONPatch",
-    // platforms: [.iOS(.v17)],
+    platforms: [.iOS(.v16), .macOS(.v14), .tvOS(.v16)],
     products: [
         .library(
             name: "JSONPatch",

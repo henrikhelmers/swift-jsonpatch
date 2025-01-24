@@ -61,7 +61,7 @@ extension NSString: JSONEquatable {
 
 extension String: JSONEquatable {
     func isJSONEquals(to element: JSONElement) -> Bool {
-        return (self as NSString).isJSONEquals(to: element)
+        (self as NSString).isJSONEquals(to: element)
     }
 }
 
@@ -97,7 +97,7 @@ extension NSArray: JSONEquatable {
 
 extension Array: JSONEquatable {
     func isJSONEquals(to element: JSONElement) -> Bool {
-        return (self as NSArray).isJSONEquals(to: element)
+        (self as NSArray).isJSONEquals(to: element)
     }
 }
 
@@ -127,6 +127,6 @@ extension NSDictionary: JSONEquatable {
 
 extension Dictionary: JSONEquatable {
     func isJSONEquals(to element: JSONElement) -> Bool {
-        return (self as NSDictionary).isJSONEquals(to: element)
+        (self as NSDictionary).isJSONEquals(to: element)
     }
 }

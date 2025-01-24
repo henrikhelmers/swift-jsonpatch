@@ -54,12 +54,12 @@ extension JSONPointer {
 
     /// The path component of the receiver.
     public var lastComponent: String? {
-        return components.last
+        components.last
     }
 
     /// Determines if receiver represents the whole document.
     public var isWholeDocument: Bool {
-        return components.isEmpty
+        components.isEmpty
     }
 
     /// Returns a URI Fragment Identifier representation. See Section 6 of RFC 6901.
@@ -123,7 +123,7 @@ extension JSONPointer {
     ///   - component: A non-escaped path component.
     /// - Returns: A json-pointer with the given component appended.
     func appended(withComponent component: String) -> JSONPointer {
-        return JSONPointer(components: ArraySlice(components + [component]))
+        JSONPointer(components: ArraySlice(components + [component]))
     }
 
     /// Creates a new json-pointer based on the reciever with the given index appended.
@@ -132,14 +132,14 @@ extension JSONPointer {
     ///   - index: A path index.
     /// - Returns: A json-pointer with the given component appended.
     func appended(withIndex index: Int) -> JSONPointer {
-        return JSONPointer(components: ArraySlice(components + [String(index)]))
+        JSONPointer(components: ArraySlice(components + [String(index)]))
     }
 
 }
 
 extension JSONPointer {
     private static let arrayIndexPattern: NSRegularExpression = {
-        return try! NSRegularExpression(pattern: "^(?:-|0|(?:[1-9][0-9]*))$", options: [])
+        try! NSRegularExpression(pattern: "^(?:-|0|(?:[1-9][0-9]*))$", options: [])
     }()
 
     /// Determines if the given path component represents a valid array index.
@@ -157,7 +157,7 @@ extension JSONPointer {
 
 extension JSONPointer: CustomDebugStringConvertible {
     public var debugDescription: String {
-        return "JSONPointer(string: \"\(string)\")"
+        "JSONPointer(string: \"\(string)\")"
     }
 }
 
@@ -169,36 +169,30 @@ extension JSONPointer: Equatable {
     ///   - rhs: Right-hand side of the equality test.
     /// - Returns: true is the lhs is equal to the rhs.
     public static func == (lhs: JSONPointer, rhs: JSONPointer) -> Bool {
-        return lhs.components == rhs.components
+        lhs.components == rhs.components
     }
 }
 
 extension JSONPointer: Hashable {
-    #if swift(>=5.0)
     public func hash(into hasher: inout Hasher) {
         hasher.combine(components)
     }
-    #else
-    public var hashValue: Int {
-        return components.hashValue
-    }
-    #endif
 }
 
 extension JSONPointer: Collection {
     public var startIndex: Int {
-        return components.startIndex
+        components.startIndex
     }
 
     public var endIndex: Int {
-        return components.endIndex
+        components.endIndex
     }
 
     public func index(after i: Int) -> Int {
-        return i + 1
+        i + 1
     }
 
     public subscript(index: Int) -> String {
-        return components[index]
+        components[index]
     }
 }

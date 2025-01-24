@@ -20,18 +20,18 @@
 
 class TestFileTestCase: JSONFileTestCase {
     override class var filename: String? {
-        return "tests"
+        "tests"
     }
 }
 
 class SpecTestFileTestCase: JSONFileTestCase {
     override class var filename: String? {
-        return "spec_tests"
+        "spec_tests"
     }
 }
 
 class ExtraFileTestCase: JSONFileTestCase {
     override class var filename: String? {
-        return "extra"
+        "extra"
     }
 }

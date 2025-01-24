@@ -33,7 +33,7 @@ struct JSONPatchGenerator {
     private var unchanged: [JSONPointer: JSONElement] = [:]
     private var operations: [Operation] = []
     private var patchOperations: [JSONPatch.Operation] {
-        return operations.map(JSONPatch.Operation.init)
+        operations.map(JSONPatch.Operation.init)
     }
 
     static func generatePatch(source: JSONElement, target: JSONElement) throws -> [JSONPatch.Operation] {

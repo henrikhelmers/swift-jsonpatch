@@ -64,7 +64,7 @@ final public class JSONPatch: Codable {
 
     /// A JSON Array represent of the receiver compatible with JSONSerialization.
     public var jsonArray: NSArray {
-        return operations.map { $0.jsonObject } as NSArray
+        operations.map { $0.jsonObject } as NSArray
     }
 
     /// Initializes a JSONPatch instance with an array of operations.
@@ -122,7 +122,7 @@ final public class JSONPatch: Codable {
     ///   - option: The writing options.
     /// - Returns: UTF-8 encoded json.
     public func data(options: JSONSerialization.WritingOptions = []) throws -> Data {
-        return try JSONSerialization.data(withJSONObject: jsonArray, options: options)
+        try JSONSerialization.data(withJSONObject: jsonArray, options: options)
     }
 
     /// Applies a json-patch to a target json document. Operations are applied
@@ -369,7 +369,7 @@ extension JSONPatch: Equatable {
     ///   - rhs: Right-hand side of the equality test.
     /// - Returns: true is the lhs is equal to the rhs.
     public static func == (lhs: JSONPatch, rhs: JSONPatch) -> Bool {
-        return lhs.operations == rhs.operations
+        lhs.operations == rhs.operations
     }
 
 }
