@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 //
-/*
+
 @testable import JSONPatch
 import XCTest
 
@@ -56,4 +56,3 @@ class JSONCodableTests: XCTestCase {
         XCTAssert(patchedPerson.age == 100, "Age should be patchd to 100, but is: \(patchedPerson.age)")
     }
 }
-*/

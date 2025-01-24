@@ -57,19 +57,19 @@ extension JSONElement {
     public var rawValue: Any {
         switch self {
         case .object(let value):
-            return value
+            value
         case .mutableObject(let value):
-            return value
+            value
         case .array(let value):
-            return value
+            value
         case .mutableArray(let value):
-            return value
+            value
         case .string(let value):
-            return value
+            value
         case .number(let value):
-            return value
+            value
         case .null:
-            return NSNull()
+            NSNull()
         }
     }
 
@@ -77,9 +77,9 @@ extension JSONElement {
     public var isContainer: Bool {
         switch self {
         case .object, .mutableObject, .array, .mutableArray:
-            return true
+            true
         default:
-            return false
+            false
         }
     }
 
@@ -87,9 +87,9 @@ extension JSONElement {
     public var isMutable: Bool {
         switch self {
         case .mutableObject, .mutableArray:
-            return true
+            true
         case .object, .array, .string, .number, .null:
-            return false
+            false
         }
     }
 
@@ -125,11 +125,11 @@ extension JSONElement {
     public func copy() throws -> JSONElement {
         switch rawValue {
         case let dict as NSDictionary:
-            return try! JSONElement(any: dict.deepMutableCopy())
+            try! JSONElement(any: dict.deepMutableCopy())
         case let arr as NSArray:
-            return try! JSONElement(any: arr.deepMutableCopy())
+            try! JSONElement(any: arr.deepMutableCopy())
         case let null as NSNull:
-            return try! JSONElement(any: null)
+            try! JSONElement(any: null)
         case let obj as NSObject:
             // Not all NSObject subclasses (e.g. NSNumber) supports mutableCopy
             // and will crash the app (NSInvalidArgumentException)
@@ -140,7 +140,7 @@ extension JSONElement {
             // types, we might just (normal-)copy the object instead
             //
             // See also: https://stackoverflow.com/questions/42074197/nsnumber-responds-positively-to-mutablecopy
-            return try! JSONElement(any: obj.copy())
+            try! JSONElement(any: obj.copy())
         default:
             throw JSONError.invalidObjectType
         }

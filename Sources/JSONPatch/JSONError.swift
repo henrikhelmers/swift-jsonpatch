@@ -20,6 +20,8 @@
 
 import Foundation
 
+// WORKAROUND: Added for Swift 6.0 compilation
+@MainActor
 @frozen
 public enum JSONError: Error {
     case invalidObjectType
@@ -32,7 +34,8 @@ public enum JSONError: Error {
 }
 
 extension JSONError: Equatable {
-    public static func ==(lhs: JSONError, rhs: JSONError) -> Bool {
+    // WORKAROUND: Added for Swift 6.0 compilation
+    nonisolated public static func ==(lhs: JSONError, rhs: JSONError) -> Bool {
         switch lhs {
         case .invalidObjectType:
             if case .invalidObjectType = rhs {
