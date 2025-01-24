@@ -142,8 +142,7 @@ final public class JSONPatch: Codable {
     ///           If nil then the patch is applied directly to the jsonObject given.
     ///   - options: The options to be used when applying the patch.
     /// - Returns: A transformed json document with the patch applied.
-    public func apply(to jsonObject: Any,
-                      options: [ApplyOption] = []) throws -> Any {
+    public func apply(to jsonObject: Any, options: [ApplyOption] = []) throws -> Any {
         var jsonDocument = try JSONElement(any: jsonObject)
         if options.contains(.applyOnCopy) {
             jsonDocument = try jsonDocument.copy()
@@ -335,43 +334,27 @@ extension JSONPatch.Operation {
 }
 
 extension JSONPatch.Operation: Equatable {
-
-    /// Tests the equality of two json-patch operations.
-    ///
-    /// - Parameters:
-    ///   - lhs: Left-hand side of the equality test.
-    ///   - rhs: Right-hand side of the equality test.
-    /// - Returns: true is the lhs is equal to the rhs.
     public static func == (lhs: JSONPatch.Operation, rhs: JSONPatch.Operation) -> Bool {
         switch (lhs, rhs) {
         case let (.add(lpath, lvalue), .add(rpath, rvalue)),
              let (.replace(lpath, lvalue), .replace(rpath, rvalue)),
              let (.test(lpath, lvalue), .test(rpath, rvalue)):
-            return lpath == rpath && lvalue == rvalue
+            lpath == rpath && lvalue == rvalue
         case let (.remove(lpath), .remove(rpath)):
-            return lpath == rpath
+            lpath == rpath
         case let (.move(lfrom, lpath), .move(rfrom, rpath)),
              let (.copy(lfrom, lpath), .copy(rfrom, rpath)):
-            return lfrom == rfrom && lpath == rpath
+            lfrom == rfrom && lpath == rpath
         default:
-            return false
+            false
         }
     }
-
 }
 
 extension JSONPatch: Equatable {
-
-    /// Tests the equality of two json-patchs.
-    ///
-    /// - Parameters:
-    ///   - lhs: Left-hand side of the equality test.
-    ///   - rhs: Right-hand side of the equality test.
-    /// - Returns: true is the lhs is equal to the rhs.
     public static func == (lhs: JSONPatch, rhs: JSONPatch) -> Bool {
         lhs.operations == rhs.operations
     }
-
 }
 
 // MARK: - Patch Codable

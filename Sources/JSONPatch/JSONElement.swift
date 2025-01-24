@@ -34,7 +34,6 @@ public enum JSONElement {
 }
 
 extension JSONElement {
-
     public init(_ value: String) {
         self = .string(value: value as NSString)
     }

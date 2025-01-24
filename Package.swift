@@ -21,8 +21,8 @@ let package = Package(
         .testTarget(
             name: "JSONPatchTests",
             dependencies: ["JSONPatch"],
-            path: "Tests",
-            resources: [.process("Resources")]
+            path: "Tests"
+            // resources: [.process("Resources")]
         )
     ]
 )

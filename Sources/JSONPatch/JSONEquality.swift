@@ -54,7 +54,6 @@ extension NSString: JSONEquatable {
         guard case let .string(str) = element else {
             return false
         }
-
         return isEqual(str)
     }
 }
