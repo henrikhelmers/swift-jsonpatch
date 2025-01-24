@@ -1,7 +1,7 @@
 # JSONPatch - Swift 4/5 json-patch implementation
 [![Apache 2 License](https://img.shields.io/badge/license-Apache%202-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Supported Platforms](https://img.shields.io/badge/platform-ios%20%7C%20macos%20%7C%20tvos-lightgrey.svg)](http://developer.apple.com)
-[![Build System](https://img.shields.io/badge/dependency%20management-spm%20%7C%20cocoapods-yellow.svg)](https://swift.org/package-manager/)
+[![Supported Platforms](https://img.shields.io/badge/platform-iOS%20%7C%20macOS%20%7C%20tvOS-lightgrey.svg)](http://developer.apple.com)
+[![Package Manager](https://img.shields.io/badge/Package%20Manager-SPM-yellow.svg)](https://swift.org/package-manager/)
 
 JSONPatch is a a swift module implements json-patch [RFC6902](https://tools.ietf.org/html/rfc6902). JSONPatch uses [JSONSerialization](https://developer.apple.com/documentation/foundation/jsonserialization) from Foundation, and has no dependencies on third-party libraries.
 
