@@ -137,7 +137,7 @@ class JSONPatchTests: XCTestCase {
         let p = try JSONPatch(data: patch)
         let s = try JSONSerialization.jsonObject(with: Data(source.utf8), options: [])
         let applied = try p.apply(to: s, options: [.relative(to: try JSONPointer(string: "/a"))])
-        XCTAssertEqual(applied as? NSDictionary, ["a":["b":"qux"]] as NSDictionary)
+        XCTAssertEqual(applied as? NSDictionary, ["a": ["b": "qux"]] as NSDictionary)
     }
 
     func testNonexistentValue() throws {
@@ -147,17 +147,17 @@ class JSONPatchTests: XCTestCase {
             "prop2": "Value2"
         }
         """.utf8)
-        
+
         let patchData = Data("""
         [
             { "op": "replace", "path": "/prop3", "value": "Value3" }
         ]
         """.utf8)
-        
+
         let patch = try JSONDecoder().decode(JSONPatch.self, from: patchData)
-        
+
         do {
-            let _ = try patch.apply(to: objectData)
+            _ = try patch.apply(to: objectData)
             XCTFail("Should have thrown a nonExistentValue error")
         } catch {
             if let error = error as? JSONError, error == .referencesNonexistentValue {
@@ -167,7 +167,7 @@ class JSONPatchTests: XCTestCase {
             }
         }
     }
-    
+
     func testIgnoreNonexistentValue() throws {
         let objectData = Data("""
         {
@@ -175,17 +175,17 @@ class JSONPatchTests: XCTestCase {
             "prop2": "Value2"
         }
         """.utf8)
-        
+
         let patchData = Data("""
         [
             { "op": "replace", "path": "/prop3", "value": "Value3" }
         ]
         """.utf8)
-        
+
         let patch = try JSONDecoder().decode(JSONPatch.self, from: patchData)
-        
+
         do {
-            let _ = try patch.apply(to: objectData, applyingOptions: [.ignoreNonexistentValues])
+            _ = try patch.apply(to: objectData, applyingOptions: [.ignoreNonexistentValues])
             // Succeeded
         } catch {
             XCTFail("Should not have thrown JSONError.referencesNonexistentValue, throwed: \(error)")

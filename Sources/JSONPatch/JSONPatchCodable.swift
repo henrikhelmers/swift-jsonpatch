@@ -183,7 +183,7 @@ extension SingleValueEncodingContainer {
 extension KeyedEncodingContainer where Key == NSDictionaryCodingKey {
 
     fileprivate mutating func encodeNSDictionary(_ value: NSDictionary) throws {
-        var encodingError: Error? = nil
+        var encodingError: Error?
         value.enumerateKeysAndObjects { (key, value, stop) in
             do {
                 guard
@@ -206,7 +206,7 @@ extension KeyedEncodingContainer where Key == NSDictionaryCodingKey {
     }
 }
 
-fileprivate struct NSDictionaryCodingKey: CodingKey {
+private struct NSDictionaryCodingKey: CodingKey {
     var stringValue: String
     var intValue: Int?
 

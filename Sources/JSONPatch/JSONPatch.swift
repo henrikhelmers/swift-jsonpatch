@@ -27,7 +27,7 @@ import Foundation
 ///
 /// https://tools.ietf.org/html/rfc6902
 final public class JSONPatch: Codable {
-    
+
     /// The mimetype for json-patch
     public static let mimetype = "application/json-patch+json"
 

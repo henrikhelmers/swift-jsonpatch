@@ -8,7 +8,7 @@ let package = Package(
     products: [
         .library(
             name: "JSONPatch",
-            targets: ["JSONPatch"]),
+            targets: ["JSONPatch"])
     ],
     targets: [
         .target(

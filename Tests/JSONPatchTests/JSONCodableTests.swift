@@ -21,29 +21,29 @@
 import XCTest
 @testable import JSONPatch
 
-fileprivate struct Person: Codable {
+private struct Person: Codable {
     var firstName: String
     var lastName: String
     var age: Int
 }
 
 class JSONCodableTests: XCTestCase {
-    
+
     func testCreatePatch() throws {
         let source = Person(firstName: "Michiel", lastName: "Horvers", age: 99)
         let target = Person(firstName: "Michiel", lastName: "Horvers", age: 100)
-        
+
         let patch = try JSONPatch.createPatch(from: source, to: target)
         XCTAssert(patch.operations.count == 1, "Patch should have only 1 operation, but has \(patch.operations.count)")
-        
+
         guard patch.operations.count == 1 else { return }
         let dict = patch.operations[0].jsonObject
-        
+
         XCTAssert((dict["op"] as? String) == "replace", "Operation should be 'replace', but is: \(String(describing: dict["op"]))")
         XCTAssert((dict["path"] as? String) == "/age", "Path should be 'age', but is: \(String(describing: dict["path"]))")
         XCTAssert((dict["value"] as? Int) == 100, "Value should be 100, but is: \(String(describing: dict["value"]))")
     }
-    
+
     func testApplyPatch() throws {
         let person = Person(firstName: "Michiel", lastName: "Horvers", age: 99)
         let patchData = Data("""
@@ -52,7 +52,7 @@ class JSONCodableTests: XCTestCase {
         ]
         """.utf8)
         let patch = try JSONDecoder().decode(JSONPatch.self, from: patchData)
-        
+
         let patchedPerson = try patch.applied(to: person)
         XCTAssert(patchedPerson.age == 100, "Age should be patchd to 100, but is: \(patchedPerson.age)")
     }

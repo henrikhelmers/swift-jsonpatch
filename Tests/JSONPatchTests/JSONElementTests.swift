@@ -66,10 +66,10 @@ class JSONElementTests: XCTestCase {
             let array = try JSONElement(any: [1, 2, 3])
             let dict = try JSONElement(any: ["Test": 1])
 
-            let _ = try int.copy()
-            let _ = try string.copy()
-            let _ = try array.copy()
-            let _ = try dict.copy()
+            _ = try int.copy()
+            _ = try string.copy()
+            _ = try array.copy()
+            _ = try dict.copy()
         } catch {
             XCTFail("Should not throw an exception, but caught: \(error)")
         }

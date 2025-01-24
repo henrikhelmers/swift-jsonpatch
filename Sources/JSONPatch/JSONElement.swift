@@ -170,9 +170,8 @@ extension JSONElement {
             self = .mutableArray(value: mutable)
         case .mutableObject, .mutableArray:
             break
-        case .string, .number, .null:
+            case .string, .number, .null:
             assertionFailure("Unsupported type to make mutable")
-            break
         }
     }
 
@@ -279,9 +278,8 @@ extension JSONElement {
                     array.insert(value.rawValue, at: index)
                 }
             }
-        default:
+            default:
             assertionFailure("Receiver is not a mutable container")
-            break
         }
     }
 
@@ -316,9 +314,8 @@ extension JSONElement {
                 }
                 array.removeObject(at: index)
             }
-        default:
+            default:
             assertionFailure("Receiver is not a mutable container")
-            break
         }
     }
 
@@ -331,7 +328,7 @@ extension JSONElement {
         return try pointer.reduce(self, { return try $0.value(for: $1) })
     }
 
-    // MARK:- Apply JSON Patch Operation Methods
+    // MARK: - Apply JSON Patch Operation Methods
 
     /// Adds the value to the JSON structure pointed to by the JSON Pointer.
     ///
@@ -479,7 +476,7 @@ extension JSONElement {
     ///   - options: The options for applying the patch.
     public mutating func apply(patch: JSONPatch,
                                options: [JSONPatch.ApplyOption] = []) throws {
-        var path: JSONPointer? = nil
+        var path: JSONPointer?
         for case let .relative(pointer) in options {
             path = pointer
             break

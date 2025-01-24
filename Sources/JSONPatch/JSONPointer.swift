@@ -28,11 +28,6 @@ public struct JSONPointer {
     /// An array of the unescaped components of the json-pointer.
     private let components: ArraySlice<String>
 
-    /// An internal initalizer for the JSONPointer to force public access to use init(string:).
-    private init(components: ArraySlice<String>) {
-        self.components = components
-    }
-
 }
 
 extension JSONPointer {
